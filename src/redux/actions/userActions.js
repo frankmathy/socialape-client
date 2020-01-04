@@ -22,10 +22,13 @@ export const loginUser = (userData, history) => dispatch => {
 };
 
 export const getUserData = () => dispatch => {
-  axios.get("/user").then(res => {
-    dispatch({
-      type: SET_USER,
-      payload: res.data
-    }).catch(err => console.log(err));
-  });
+  axios
+    .get("/user")
+    .then(res => {
+      dispatch({
+        type: SET_USER,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
 };
