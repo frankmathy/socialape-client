@@ -19,7 +19,7 @@ import CalendarToday from "@material-ui/icons/CalendarToday";
 import { connect } from "react-redux";
 import theme from "../util/theme";
 
-const styles = {
+const styles = theme => ({
   paper: {
     padding: 20
   },
@@ -54,7 +54,7 @@ const styles = {
       margin: "0 0 10px 0"
     },
     "& svg.button": {
-      "&: hover": {
+      "&:hover": {
         cursor: "pointer"
       }
     }
@@ -65,7 +65,7 @@ const styles = {
       margin: "20px 10px"
     }
   }
-};
+});
 
 class Profile extends Component {
   render() {
@@ -82,8 +82,8 @@ class Profile extends Component {
       authenticated ? (
         <Paper className={classes.paper}>
           <div className={classes.profile}>
-            <div className="profile-image">
-              <img src={imageUrl} alt="profile" />
+            <div className="image-wrapper">
+              <img src={imageUrl} alt="profile" className="profile-image" />
             </div>
             <hr />
             <div className="profile-details">
@@ -96,7 +96,7 @@ class Profile extends Component {
                 @{handle}
               </MuiLink>
               <hr />
-              {bio && <Typography variant="body2">${bio}</Typography>}
+              {bio && <Typography variant="body2">{bio}</Typography>}
               <hr />
               {location && (
                 <Fragment>

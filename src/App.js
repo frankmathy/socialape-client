@@ -5,13 +5,13 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import themeFile from "./util/theme";
 import jwtDecode from "jwt-decode";
-import axios from 'axios';
+import axios from "axios";
 
 // Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { SET_AUTHENTICATED } from './redux/types';
-import { logoutUser, getUserData } from './redux/actions/userActions';
+import { SET_AUTHENTICATED } from "./redux/types";
+import { logoutUser, getUserData } from "./redux/actions/userActions";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -24,6 +24,9 @@ import signup from "./pages/signup";
 
 const theme = createMuiTheme(themeFile);
 
+/*axios.defaults.baseURL =
+  "https://europe-west2-socialape-c6bc6.cloudfunctions.net/api";*/
+
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
@@ -31,8 +34,8 @@ if (token) {
     store.dispatch(logoutUser());
     window.location.href = "/login";
   } else {
-    store.dispatch({ type: SET_AUTHENTICATED});
-    axios.defaults.headers.common['Authorization'] = token;
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common["Authorization"] = token;
     store.dispatch(getUserData());
   }
 }
@@ -47,16 +50,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <AuthRoute
-                  exact
-                  path="/login"
-                  component={login}
-                />
-                <AuthRoute
-                  exact
-                  path="/signup"
-                  component={signup}
-                />
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
               </Switch>
             </div>
           </Router>
