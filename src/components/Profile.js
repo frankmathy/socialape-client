@@ -1,23 +1,19 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-
-// MUI Stuff
-import withStyles from "@material-ui/core/styles/withStyles";
+// MUI stuff
 import Button from "@material-ui/core/Button";
-import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
+import MuiLink from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
-
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
-
-// Redux stuff
+//Redux
 import { connect } from "react-redux";
-import theme from "../util/theme";
 
 const styles = theme => ({
   paper: {
@@ -100,8 +96,7 @@ class Profile extends Component {
               <hr />
               {location && (
                 <Fragment>
-                  <LocationOn color="primary" />
-                  <span>{location}</span>
+                  <LocationOn color="primary" /> <span>{location}</span>
                   <hr />
                 </Fragment>
               )}
@@ -146,7 +141,7 @@ class Profile extends Component {
         </Paper>
       )
     ) : (
-      <p>Loading...</p>
+      <p>loading...</p>
     );
 
     return profileMarkup;

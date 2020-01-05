@@ -16,11 +16,11 @@ const styles = {
     marginBottom: 20
   },
   image: {
-    minWidth: 200,
-    objectFit: "cover"
+    minWidth: 200
   },
   content: {
-    padding: 25
+    padding: 25,
+    objectFit: "cover"
   }
 };
 
@@ -49,9 +49,9 @@ class Scream extends Component {
         <CardContent className={classes.content}>
           <Typography
             variant="h5"
-            color="primary"
             component={Link}
             to={`/users/${userHandle}`}
+            color="primary"
           >
             {userHandle}
           </Typography>

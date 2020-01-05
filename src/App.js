@@ -1,31 +1,25 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { MuiThemeProvider } from "@material-ui/core/styles";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import themeFile from "./util/theme";
 import jwtDecode from "jwt-decode";
-import axios from "axios";
-
 // Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { logoutUser, getUserData } from "./redux/actions/userActions";
-
 // Components
 import Navbar from "./components/Navbar";
+import themeObject from "./util/theme";
 import AuthRoute from "./util/AuthRoute";
-
 // Pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import axios from "axios";
 
-const theme = createMuiTheme(themeFile);
-
-/*axios.defaults.baseURL =
-  "https://europe-west2-socialape-c6bc6.cloudfunctions.net/api";*/
+const theme = createMuiTheme(themeObject);
 
 const token = localStorage.FBIdToken;
 if (token) {
